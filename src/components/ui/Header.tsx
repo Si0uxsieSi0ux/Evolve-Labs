@@ -15,7 +15,7 @@ const Header: React.FC<HeaderProps> = ({ scrollToSection, homeRef, aboutRef, con
     <header className="fixed top-0 left-0 w-full bg-white shadow-md z-10 flex items-center justify-between px-6 py-4">
       <div className="flex items-center space-x-4">
         {/* Logo placeholder, cámbialo por tu imagen */}
-        <img src="/logo.png" alt="Logo" className="h-10 w-10" />
+        <img src="/evolution-ai-logo-vector.png"  className="h-12 w-20" />
         <span className={`${inter.className} text-2xl text-gray-800`}>Evolve Labs</span>
       </div>
       <nav className="flex space-x-6">
