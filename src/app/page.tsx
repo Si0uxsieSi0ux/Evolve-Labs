@@ -5,7 +5,6 @@ import Header from '../components/ui/Header';
 import HomeSection from '../components/HomeSection';
 import AboutSection from '../components/AboutSection';
 import ContactSection from '../components/ContactSection';
-import Lenis from '@studio-freight/lenis';
 
 export default function Home() {
   const homeRef = useRef<HTMLElement | null>(null);
@@ -18,13 +17,12 @@ export default function Home() {
       //const lenis = new Lenis();
       //lenisRef.scrollTo(ref.current, {
       lenisRef.current.scrollTo(ref.current, {
-        offset: -100, // Ajusta para el header fijo
-        duration: 1.2,
+        offset: 40, // Ajusta para el header fijo
+        duration: 1.0,
         easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       });
     }
   };
-
   return (
     <>
       <Header

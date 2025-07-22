@@ -8,7 +8,7 @@ export const useLenis = () => {
 
     useEffect(() => {
         const lenis = new Lenis({
-            duration: 1.5, // Duración del scroll
+            duration: 0.5, // Duración del scroll
             easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Suavizado
         });
 
