@@ -6,12 +6,14 @@ import HomeSection from '../components/HomeSection';
 import AboutSection from '../components/AboutSection';
 import ContactSection from '../components/ContactSection';
 import MethodologySection from '../components/MethodologySection';
+import ProductsSection from '../components/ProductsSection';
 
 export default function Home() {
   const homeRef = useRef<HTMLElement | null>(null);
   const aboutRef = useRef<HTMLElement | null>(null);
   const contactRef = useRef<HTMLElement | null>(null);
   const methodRef = useRef<HTMLElement | null>(null);
+  const productRef = useRef<HTMLElement | null>(null);
   const lenisRef = useLenis();
 
   const scrollToSection = (ref: React.RefObject<HTMLElement | null>) => {
@@ -33,11 +35,13 @@ export default function Home() {
         aboutRef={aboutRef}
         contactRef={contactRef}
         methodRef={methodRef}
+        productRef={productRef}
       />
       <main>
         <HomeSection ref={homeRef} />
         <AboutSection ref={aboutRef} />
         <MethodologySection ref={methodRef}/>
+        <ProductsSection ref={productRef}/>
         <ContactSection ref={contactRef} />
       </main>
     </>

@@ -9,9 +9,10 @@ interface HeaderProps {
   aboutRef: React.RefObject<HTMLElement | null>;
   contactRef: React.RefObject<HTMLElement | null>;
   methodRef: React.RefObject<HTMLElement | null>;
+  productRef: React.RefObject<HTMLElement | null>;
 }
 
-const Header: React.FC<HeaderProps> = ({ scrollToSection, homeRef, aboutRef, contactRef, methodRef }) => {
+const Header: React.FC<HeaderProps> = ({ scrollToSection, homeRef, aboutRef, contactRef, methodRef, productRef }) => {
   return (
     <header 
       className="fixed top-0 left-0 w-full shadow-md z-20 flex items-center justify-between px-6 py-1  h-[70px]" 
@@ -38,6 +39,12 @@ const Header: React.FC<HeaderProps> = ({ scrollToSection, homeRef, aboutRef, con
           className="text-gray-600 hover:text-blue-500 transition-colors"
         >
           <b className="w-[105.6px] relative text-[15px] flex font-inter text-black hover:text-blue-500 text-center items-center justify-center h-[37px] transition-colors">Methodology</b>
+        </button>
+        <button
+          onClick={() => scrollToSection(productRef)}
+          className="text-gray-600 hover:text-blue-500 transition-colors"
+        >
+          <b className="w-[105.6px] relative text-[15px] flex font-inter text-black hover:text-blue-500 text-center items-center justify-center h-[37px] transition-colors">Products</b>
         </button>
         <button
           onClick={() => scrollToSection(contactRef)}
