@@ -8,13 +8,13 @@ export const useLenis = () => {
 
     useEffect(() => {
         const lenis = new Lenis({
-            duration: 0.5, // Duración del scroll
-            //easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Suavizado
-            lerp: 0.12,
-            smoothWheel: false,               // Habilita suavizado en rueda
-            wheelMultiplier: 1,             // Reduce aceleración del scroll
-            touchMultiplier: 1,    
-            easing: (t) => t,
+            duration: 1.5, // Duración del scroll
+            easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Suavizado
+            //lerp: 0.12,
+            //smoothWheel: true,               // Habilita suavizado en rueda
+            //wheelMultiplier: 1,             // Reduce aceleración del scroll
+            //touchMultiplier: 1,    
+            ///easing: (t) => t,
         });
 
         lenisRef.current = lenis;
