@@ -1,56 +1,98 @@
-import React, { forwardRef } from 'react';
-
+import React, { forwardRef, useState, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 //const HomeSection: React.FC = () => {
 const HomeSection = forwardRef<HTMLElement>((props, ref) => {
+  const [currentImage, setCurrentImage] = useState(0);
+  const images = [
+    { src: '/ai_carousel1.png', alt: 'Imagen 1', dur: 2 },
+    { src: '/ai_carousel2.png', alt: 'Imagen 2', dur: 3 },
+    { src: '/ai_carousel3.png', alt: 'Imagen 3', dur: 4 }
+  ];
+  const title = "We are scientists doing technology";
+
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  const startCarousel = () => {
+    if (intervalRef.current) return;
+    intervalRef.current = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % images.length);
+    }, 2000); // cambia cada 3 segundos
+  };
+
+  const stopCarousel = () => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
+  };
+
   return (
-    <section 
-      ref={ref}
-      className="min-h-screen flex items-center [background:linear-gradient(180deg,_#ededed,_#efcfa2_0.01%,_#fff_77.88%)] h-[452px]"
-      /*className="min-h-screen flex items-center justify-center bg-blue-100"*/
-      /*className="min-h-screen w-full flex items-center justify-center bg-[conic-gradient(from_-78.19deg_at_70%_110%,_#7b3eff_-18.57deg,_#ffc400_126.35deg,_#fff_335.07deg,_#fff_338.56deg,_#7b3eff_341.43deg,_#ffc400_486.35deg)]"*/
-    >
-      <div className="flex justify-between items-center px-20 py-20 space-x-50">
-        {/* Primer bloque de texto */}
-        <div className="w-7/2">
-          <h1 className="text-4xl font-bold">
-            We are scientists<br />
-            doing technology
-          </h1>
-          <p className="mt-4 text-lg">
-            We design advanced AI architectures, <br />
-            driven by science and made for the real world.
-          </p>
-        </div>
+    <>
+      <section
+        ref={ref}
+        className="min-h-[600px] flex items-center relative [background:linear-gradient(180deg,_#ededed,_#efcfa2_0.01%,_#fff_77.88%)]"
+      >
+        <div 
+          //className="flex flex-col-reverse lg:flex-row justify-between items-center px-6 sm:px-12 lg:px-20 py-10 gap-8 w-full">
+          className="flex flex-col lg:flex-row justify-between items-start px-6 sm:px-12 lg:px-20 py-6 gap-6 w-full max-w-[1400px] mx-auto"
+        >
+          {/* Texto */}
+          <div className="w-full lg:w-1/2 text-center lg:text-left">
+            {<motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.2 }}
+              
+            >
+              <h1 className="text-8xl sm:text-5xl lg:text-6xl font-bold leading-tight">
+                We are scientists<br />
+                doing technology
+              </h1>
+            </motion.div>}
+           
+            <p className="mt-4 text-lg sm:text-xl lg:text-2xl">
+              We design advanced AI architectures, <br />
+              driven by science and made for the real world.
+            </p>
+          </div>
 
-        {/* Segundo bloque de texto */}
-        {/*<div className="w-5/2 text-left">
-          <h2 className="text-4xl font-bold">
-            Powered by cognition,<br />
-            built for industry
-          </h2>
-          <p className="mt-4 text-lg">
-            Our systems go beyond chat —<br />
-            they reason, perceive, and act with purpose.
-          </p>
-        </div>*/}
-
-        {/* Tercer bloque de texto */}
-        <div className="w-44/7 text-center">
-          
-          <img src="/ai_carousel1.png"  className='rounded-[10px]' />
-          {/*<h2 className="text-4xl font-bold">
-            Powered by cognition,<br />
-            built for industry
-          </h2>*/}
-          {/*<p className="mt-4 text-lg">
-            Our systems go beyond chat —<br />
-            they reason, perceive, and act with purpose.
-          </p>*/}
+          <motion.div
+            className="w-full lg:w-1/2 flex justify-center lg:justify-end relative -mt-10"
+            whileHover={{ scale: 1.11 }}
+            //onHoverStart={() => setCurrentImage((prev) => (prev + 1) % images.length)}
+            onMouseEnter={startCarousel}
+            onMouseLeave={stopCarousel}
+          >
+            <AnimatePresence>
+            <motion.img
+              key={currentImage} // esto es esencial para que AnimatePresence detecte cambios
+              src={images[currentImage].src}
+              alt={images[currentImage].alt}
+              className="rounded-[10px] w-3/4 sm:w-2/3 lg:w-full max-w-[600px] absolute top-0 left-1/2 -translate-x-1/2 lg:left-auto lg:-translate-x-0"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1 }} // aquí está la suavidad
+            />
+          </AnimatePresence>
+            {/*images.map((item, index, array) => (
+              <motion.img
+                key={index}
+                src={item.src}
+                className="rounded-[10px] w-3/4 sm:w-2/3 lg:w-full max-w-[600px] absolute top-0 left-1/2 -translate-x-1/2 lg:left-auto lg:-translate-x-0"
+                //className="rounded-[40px] w-full sm:w-full lg:w-full max-w-[600px] absolute top-0 left-auto -translate-x-0"
+                alt={item.alt}
+                //initial={{ opacity: index === 0 ? 1 : 0 }}
+                initial={{opacity: 0}}
+                animate={{ opacity: currentImage === 0 ? 1 : 0 }}
+                
+                transition={{ duration: 1.5, ease: 'easeInOut' }}
+              />
+            ))*/}
+          </motion.div>
         </div>
-      </div>
-      
-      
-    </section>
+      </section>
+    </>
   );
 });
 

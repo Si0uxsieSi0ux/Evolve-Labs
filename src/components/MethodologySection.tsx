@@ -1,27 +1,114 @@
-import React, { forwardRef, useEffect, useRef } from 'react';
+import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import Image from "next/image";
-import { gsap } from 'gsap';
+import { motion, useAnimation, AnimatePresence } from "framer-motion";
+import { wrap } from "@popmotion/popcorn";
+
+const slides = [
+    {
+      id: 0,
+      title: "Reasoning Loops",
+      description:
+        "Connect with the people who matter most. Our platform helps you target and engage the right audiences with precision.",
+      image: "/image 64.png",
+    },
+    {
+      id: 1,
+      title: "Cognitive Modules",
+      description:
+        "Connect with the people who matter most. Our platform helps you target and engage the right audiences with precision.",
+      image: "/image 61.png",
+    },
+    {
+      id: 2,
+      title: "Multi-Agent Systems",
+      description:
+        "Connect with the people who matter most. Our platform helps you target and engage the right audiences with precision.",
+      image: "/image 63.png",
+    },
+    {
+      id: 3,
+      title: "Agent-Oriented AI",
+      description:
+        "Connect with the people who matter most. Our platform helps you target and engage the right audiences with precision.",
+      image: "/image 62.png",
+    }
+    // Agrega más slides si lo necesitas
+  ];
+
+  const variants = {
+    enter: (direction: number) => ({
+      x: direction > 0 ? 300 : -300,
+      opacity: 0,
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+    },
+    exit: (direction: number) => ({
+      x: direction > 0 ? -300 : 300,
+      opacity: 0,
+    }),
+  };
+
 
 const MethodologySection = forwardRef<HTMLElement>((props, ref) => {
+  const [[page, direction], setPage] = useState([0, 0]);
+  const index = wrap(0, slides.length, page); 
+  const controls = useAnimation();
+
+  const paginate = (newDirection: number) => {
+    setPage([page + newDirection, newDirection]);
+  };
+
+  const handleDragEnd = (_: any, info: any) => {
+    if (info.offset.x > 50) paginate(-1);
+    else if (info.offset.x < -50) paginate(1);
+  };
   
   return (
     <section
       ref={ref}
-      className="w-full relative [background:linear-gradient(180deg,_#fff,_#efcfa2)] h-[507px] "
-      //className="w-full relative [background:linear-gradient(180deg,_#fff,_#efcfa2)] h-[607px] overflow-hidden text-left text-2xl text-black font-inter"
+      className="w-full relative [background:linear-gradient(180deg,_#fff,_#efcfa2)] h-[600px] overflow-hidden"
     >
-      <b className="absolute h-[28.09%] w-[32.67%] top-[26.52%] left-[58.09%] text-[40px] flex items-center">Especialistas en Arquitecturas Agentic AI</b>
-            
-      <div className="absolute h-[47.94%] w-[28.5%] top-[52.06%] left-[58.49%] font-light flex items-center">
+      <b className="absolute text-[40px] top-[80px] left-[60%] w-[35%]">
+        Especialistas en Arquitecturas Agentic AI
+      </b>
+
+      <div className="absolute top-[180px] left-[60%] w-[30%] font-light text-sm">
         We make tracking your analytics simple and stress-free. Get clear, real-time insights in one place and make smarter decisions without the complexity.
       </div>
-      <div className="absolute h-[64.44%] w-[37.74%] top-[30.01%] right-[57.7%] bottom-[2.55%] left-[4.57%] shadow-[5px_12px_4px_1px_rgba(192,_155,_79,_0.25)] rounded-[10px] bg-white" />
-        <b className="absolute h-[6.29%] w-[21.05%] top-[62.28%] left-[7.15%] flex items-center">Reasoning Loops</b>
-        <div className="absolute h-[19.06%] w-[26.91%] top-[70.14%] left-[7.15%] text-base font-extralight flex items-center">
-          Connect with the people who matter most. Our platform helps you target and engage the right audiences with precision.
-        </div>
-        <Image className="absolute top-[206px] right-[85%] left-[7.15%] max-w-full overflow-hidden h-[99px] object-cover" width={79} height={99} sizes="100vw" alt="" src="/image 64.png" />
-                  
+      <div className="absolute top-[25%] left-[5%] w-[30%] h-[380px]">
+        <AnimatePresence initial={false} custom={direction}>
+          <motion.div
+            key={page}
+            custom={direction}
+            variants={variants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{ duration: 0.5 }}
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={1}
+            onDragEnd={handleDragEnd}
+            className="absolute w-full h-full bg-white rounded-[10px] shadow-xl p-4"
+          >
+            <Image
+              src={slides[index].image}
+              alt=""
+              width={100}
+              height={100}
+              //className="mb-4"
+              
+            />
+            <b className="block mb-2 text-[34px]">{slides[index].title}</b>
+            <div className="text-[20px] text-sm font-extralight">
+              {slides[index].description}
+            </div>
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
     </section>
   );
 });
