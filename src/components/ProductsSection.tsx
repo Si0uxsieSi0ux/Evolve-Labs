@@ -42,8 +42,70 @@ const variants = {
 const ProductsSection = forwardRef<HTMLElement>((props, ref) => {
     const [[page, direction], setPage] = useState([0, 0]);
   const index = wrap(0, slides.length, page);
+  const [isSectionVisible, setIsSectionVisible] = useState(false);
 
-  const handleWheel = (event: WheelEvent) => {
+
+    const handleWheel = (event: WheelEvent) => {
+    if (!isSectionVisible) return; // Solo manejar el scroll si la sección está visible
+    event.preventDefault(); // Evita el scroll global
+    if (event.deltaY > 0) {
+      // Scroll hacia abajo
+      if (index < slides.length - 1) {
+        setPage([page + 1, 1]);
+      } else {
+        // Última slide: permitir scroll a la siguiente sección
+        const section = (ref as React.RefObject<HTMLElement>).current;
+        if (section) {
+          const nextSection = section.nextElementSibling as HTMLElement;
+          if (nextSection) {
+            nextSection.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      }
+    } else if (event.deltaY < 0) {
+      // Scroll hacia arriba
+      if (index > 0) {
+        setPage([page - 1, -1]);
+      } else {
+        // Primera slide: permitir scroll hacia arriba
+        const section = (ref as React.RefObject<HTMLElement>).current;
+        if (section) {
+          const prevSection = section.previousElementSibling as HTMLElement;
+          if (prevSection) {
+            prevSection.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      }
+    }
+  };
+
+  useEffect(() => {
+    const section = (ref as React.RefObject<HTMLElement>).current;
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsSectionVisible(entry.isIntersecting);
+      },
+      { threshold: 0.1 } // Activa cuando el 50% de la sección está visible
+    );
+
+    observer.observe(section);
+
+    const handleWheelWrapper = (e: WheelEvent) => handleWheel(e);
+
+    if (isSectionVisible) {
+      section.addEventListener("wheel", handleWheelWrapper, { passive: false });
+    }
+
+    return () => {
+      observer.unobserve(section);
+      section.removeEventListener("wheel", handleWheelWrapper);
+    };
+  }, [isSectionVisible, index]);
+
+
+  /*const handleWheel = (event: WheelEvent) => {
     event.preventDefault(); // Evita el scroll global
     if (event.deltaY > 0) {
       // Scroll down
@@ -63,7 +125,7 @@ const ProductsSection = forwardRef<HTMLElement>((props, ref) => {
       // Scroll up
       /*if (index > 0) {
         setPage([page - 1, -1]);
-      }*/
+      }
      if (index > 0) {
         setPage([page - 1, -1]);
       } else {
@@ -77,7 +139,7 @@ const ProductsSection = forwardRef<HTMLElement>((props, ref) => {
         }
       }
     }
-  };
+  };*/
 
   /*useEffect(() => {
     const section = (ref as React.RefObject<HTMLElement>).current;
@@ -86,7 +148,7 @@ const ProductsSection = forwardRef<HTMLElement>((props, ref) => {
       return () => section.removeEventListener('wheel', handleWheel);
     }
   }, [index]);*/
-  useEffect(() => {
+  /*useEffect(() => {
   const section = (ref as React.RefObject<HTMLElement>).current;
   if (!section) return;
 
@@ -101,7 +163,7 @@ const ProductsSection = forwardRef<HTMLElement>((props, ref) => {
     section.removeEventListener("wheel", handleWheelWrapper);
     document.body.style.overflow = "auto";
   };
-}, [index]);
+}, [index]);*/
 
 
     /*return (
@@ -141,14 +203,14 @@ const ProductsSection = forwardRef<HTMLElement>((props, ref) => {
                     transition={{ duration: 0.5 }}
                     className="absolute w-full h-full rounded-[10px] overflow-hidden"
                     >
-                    <Image
-                        src={slides[index].image}
-                        alt={slides[index].title}
-                        width={419}
-                        height={313}
-                        className="w-full h-full object-cover"
-                        sizes="100vw"
-                    />
+                        <Image
+                            src={slides[index].image}
+                            alt={slides[index].title}
+                            width={419}
+                            height={313}
+                            className="w-full h-full object-cover"
+                            sizes="100vw"
+                        />
                     </motion.div>
                 </AnimatePresence>
             </div>
