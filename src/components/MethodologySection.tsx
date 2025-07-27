@@ -68,7 +68,8 @@ const MethodologySection = forwardRef<HTMLElement>((props, ref) => {
   return (
     <section
       ref={ref}
-      className="min-h-[600px] py-16 px-6 w-full relative [background:linear-gradient(180deg,_#fff,_#efcfa2)] h-[600px] overflow-hidden"
+      //className="min-h-[600px] py-16 px-6 w-full relative [background:linear-gradient(180deg,_#fff,_#efcfa2)] h-[600px] overflow-hidden"
+      className="min-h-[600px] py-16 px-6 w-full relative bg-transparent h-[600px] overflow-hidden"
     >
       <div 
         //className="flex flex-col-reverse lg:flex-row justify-between items-center h-full gap-12"

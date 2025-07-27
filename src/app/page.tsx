@@ -7,7 +7,9 @@ import AboutSection from '../components/AboutSection';
 import ContactSection from '../components/ContactSection';
 import MethodologySection from '../components/MethodologySection';
 import ProductsSection from '../components/ProductsSection';
-
+//import Aurora from '../components/Aurora'; 
+import IridescenceBackground from '../components/IridescenceBackground';
+//import ThreadsBackground from '../components/ThreadsBackground';
 export default function Home() {
   const homeRef = useRef<HTMLElement | null>(null);
   const aboutRef = useRef<HTMLElement | null>(null);
@@ -29,6 +31,7 @@ export default function Home() {
   };
   return (
     <>
+      
       <Header
         scrollToSection={scrollToSection}
         homeRef={homeRef}
@@ -38,11 +41,37 @@ export default function Home() {
         productRef={productRef}
       />
       <main>
-        <HomeSection ref={homeRef} />
+        {/*<HomeSection ref={homeRef} />
         <AboutSection ref={aboutRef} />
         <MethodologySection ref={methodRef}/>
         <ProductsSection ref={productRef}/>
+        <ContactSection ref={contactRef} />*/}
+    {/*<AuroraBackground auroraProps={{ colorStops: ["#ffe063", "#46f2ef", "#6DEEC3"], amplitude: 0.3, speed: 1.0, blend: 0.5 }}>*/}
+  
+
+{/*<ThreadsBackground 
+  threadProps={
+    { color: [0.5, 0.6, 0.8], 
+      amplitude: 2.9,
+      distance: 0,
+      enableMouseInteraction: false
+    }
+  }
+>
+    <AboutSection ref={aboutRef} />
+</ThreadsBackground>*/}
+  {<IridescenceBackground iridescenceProps={{ color: [1.0, 1.0, 1.0], speed: 0.9, amplitude: 0.15, mouseReact: true }}>
+  <HomeSection ref={homeRef}/>
+  <AboutSection ref={aboutRef} />
+  <MethodologySection ref={methodRef}/>
+        <ProductsSection ref={productRef}/>
         <ContactSection ref={contactRef} />
+</IridescenceBackground>}
+  
+  
+  
+          {/*</AuroraBackground>*/}
+
       </main>
     </>
   );

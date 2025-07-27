@@ -82,7 +82,8 @@ const Header: React.FC<HeaderProps> = ({ scrollToSection, homeRef, aboutRef, con
 
   return (
     <header 
-      className="fixed top-0 left-0 w-full shadow-md z-20 flex flex-col items-center px-6 py-2 bg-[#EFCFA2]"
+      //className="fixed top-0 left-0 w-full shadow-md z-20 flex flex-col items-center px-6 py-2 bg-[#EFCFA2]"
+      className="fixed top-0 left-0 w-full shadow-md z-20 flex flex-col items-center px-6 py-2 bg-white"
     >
       {/* Logo centrado en pantallas pequeñas */}
       <div className="flex items-center justify-between w-full max-w-6xl lg:flex-row">

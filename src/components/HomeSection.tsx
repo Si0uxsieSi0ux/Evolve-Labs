@@ -30,7 +30,8 @@ const HomeSection = forwardRef<HTMLElement>((props, ref) => {
     <>
       <section
         ref={ref}
-        className="min-h-[600px] flex items-center relative [background:linear-gradient(180deg,_#ededed,_#efcfa2_0.01%,_#fff_77.88%)]"
+        //className="min-h-[600px] flex items-center relative [background:linear-gradient(180deg,_#ededed,_#efcfa2_0.01%,_#fff_77.88%)]"
+        className="min-h-[600px] flex items-center relative bg-transparent"
         //className="relative w-full min-h-screen px-6 md:px-20 pt-20 pb-10"
       >
         <div 

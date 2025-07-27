@@ -188,7 +188,8 @@ const ProductsSection = forwardRef<HTMLElement>((props, ref) => {
   return (
     <section
       ref={ref}
-      className="min-h-screen flex items-center justify-center [background:linear-gradient(180deg,_#efcfa2,_#fff)]"
+      //className="min-h-screen flex items-center justify-center [background:linear-gradient(180deg,_#efcfa2,_#fff)]"
+      className="min-h-screen flex items-center justify-center bg-transparent"
     >
         <div className="w-full max-w-6xl flex flex-col lg:flex-row items-center justify-between gap-10 px-6">
             <div className="w-full lg:w-1/2 h-[400px] relative">

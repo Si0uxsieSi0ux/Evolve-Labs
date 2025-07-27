@@ -35,12 +35,13 @@ const AboutSection = forwardRef<HTMLElement>((props, ref) => {
   return (
     <section
       ref={ref}
-      className="min-h-[600px] py-16 px-6 bg-white flex flex-col items-center justify-center text-black"
+      //className="min-h-[600px] py-16 px-6 bg-white flex flex-col items-center justify-center text-black"
+      className="min-h-[600px] py-16 px-6 bg-transparent flex flex-col items-center justify-center text-black"
     >
       <div className="w-full max-w-6xl flex flex-col-reverse lg:flex-row items-center justify-between gap-10">
         {/* Texto principal */}
-        <div className="flex-1 text-center lg:text-left">
-          <h2 className="text-3xl sm:text-4xl font-light mb-6 leading-snug">
+        <div className="flex-1 text-center justify-center lg:text-left">
+          <h2 className="text-4xl sm:text-4xl font-light mb-6 leading-snug">
             <b>
               Usamos conocimiento científico, metodología científica para asegurar calidad y fiabilidad
             </b>

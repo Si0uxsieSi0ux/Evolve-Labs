@@ -6,7 +6,8 @@ const ContactSection = forwardRef<HTMLElement>((props, ref) => {
     <>
     <section 
       ref={ref}
-      className="relative min-h-screen flex items-center [background:linear-gradient(180deg,_#fff,_#efcfa2_76.98%)]"
+      //className="relative min-h-screen flex items-center [background:linear-gradient(180deg,_#fff,_#efcfa2_76.98%)]"
+      className="relative min-h-screen flex items-center bg-transparent"
       /*className="min-h-screen flex items-center justify-center bg-yellow-100"*/
     >
       {/*<h1 className="absolute top-15 left-6 text-4xl font-bold">Contact</h1>*/}
