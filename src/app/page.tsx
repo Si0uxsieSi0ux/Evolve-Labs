@@ -61,9 +61,9 @@ export default function Home() {
     <AboutSection ref={aboutRef} />
 </ThreadsBackground>*/}
   {<IridescenceBackground iridescenceProps={{ color: [1.0, 1.0, 1.0], speed: 0.9, amplitude: 0.15, mouseReact: true }}>
-  <HomeSection ref={homeRef}/>
-  <AboutSection ref={aboutRef} />
-  <MethodologySection ref={methodRef}/>
+        <HomeSection ref={homeRef}/>
+        <AboutSection ref={aboutRef} />
+        <MethodologySection ref={methodRef}/>
         <ProductsSection ref={productRef}/>
         <ContactSection ref={contactRef} />
 </IridescenceBackground>}

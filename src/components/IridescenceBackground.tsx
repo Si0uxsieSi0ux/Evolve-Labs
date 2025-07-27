@@ -1,12 +1,12 @@
 import React, { ReactNode } from 'react';
-import Iridescence from './ui/Iridescence'; // Ajusta la ruta según tu estructura
+import Iridescence from './ui/Iridescence';
 
 interface IridescenceBackgroundProps {
   children: ReactNode;
   className?: string;
   iridescenceProps?: {
     color?: [number, number, number]; // Color RGB para el efecto
-    speed?: number; // Velocidad de la animación
+    speed?: number; 
     amplitude?: number; // Intensidad del movimiento
     mouseReact?: boolean; // Si responde al movimiento del mouse
   };

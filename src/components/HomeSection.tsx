@@ -82,7 +82,7 @@ const HomeSection = forwardRef<HTMLElement>((props, ref) => {
               alt={images[currentImage].alt}
               //className="rounded-[10px] w-3/4 sm:w-2/3 lg:w-full max-w-[600px] absolute top-0 left-1/2 -translate-x-1/2 lg:left-auto lg:-translate-x-0"
               //className="rounded-[10px] w-[90%] sm:w-[70%] md:w-[60%] lg:w-full max-w-[500px] absolute top-0 left-1/2 -translate-x-1/2 lg:left-auto lg:-translate-x-0"
-              className="rounded-[10px] w-[90%] sm:w-[80%] md:w-[60%] lg:w-full max-w-[400px]  relative lg:absolute top-0 left-1/2 lg:left-auto -translate-x-1/2 lg:-translate-x-0"
+              className="rounded-[10px] w-[90%] sm:w-[80%] md:w-[60%] lg:w-full max-w-[500px]  relative lg:absolute top-0 left-1/2 lg:left-auto -translate-x-1/2 lg:-translate-x-0"
 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
