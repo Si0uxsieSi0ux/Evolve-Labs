@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import Threads from './ui/Threads'; // Ajusta la ruta según tu estructura
+import Threads from './ui/Threads'; 
 
 interface ThreadBackgroundProps {
   children: ReactNode;

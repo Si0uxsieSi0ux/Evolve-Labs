@@ -23,7 +23,7 @@ export default function Home() {
       //const lenis = new Lenis();
       //lenisRef.scrollTo(ref.current, {
       lenisRef.current.scrollTo(ref.current, {
-        offset: -50, // Ajusta para el header fijo
+        offset: -50, 
         duration: 1.5,
         easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       });
@@ -31,7 +31,6 @@ export default function Home() {
   };
   return (
     <>
-      
       <Header
         scrollToSection={scrollToSection}
         homeRef={homeRef}
@@ -41,37 +40,13 @@ export default function Home() {
         productRef={productRef}
       />
       <main>
-        {/*<HomeSection ref={homeRef} />
-        <AboutSection ref={aboutRef} />
-        <MethodologySection ref={methodRef}/>
-        <ProductsSection ref={productRef}/>
-        <ContactSection ref={contactRef} />*/}
-    {/*<AuroraBackground auroraProps={{ colorStops: ["#ffe063", "#46f2ef", "#6DEEC3"], amplitude: 0.3, speed: 1.0, blend: 0.5 }}>*/}
-  
-
-{/*<ThreadsBackground 
-  threadProps={
-    { color: [0.5, 0.6, 0.8], 
-      amplitude: 2.9,
-      distance: 0,
-      enableMouseInteraction: false
-    }
-  }
->
-    <AboutSection ref={aboutRef} />
-</ThreadsBackground>*/}
-  {<IridescenceBackground iridescenceProps={{ color: [1.0, 1.0, 1.0], speed: 0.9, amplitude: 0.15, mouseReact: true }}>
-        <HomeSection ref={homeRef}/>
-        <AboutSection ref={aboutRef} />
-        <MethodologySection ref={methodRef}/>
-        <ProductsSection ref={productRef}/>
-        <ContactSection ref={contactRef} />
-</IridescenceBackground>}
-  
-  
-  
-          {/*</AuroraBackground>*/}
-
+        {<IridescenceBackground iridescenceProps={{ color: [1.0, 1.0, 1.0], speed: 0.9, amplitude: 0.15, mouseReact: true }}>
+              <HomeSection ref={homeRef}/>
+              <AboutSection ref={aboutRef} />
+              <MethodologySection ref={methodRef}/>
+              <ProductsSection ref={productRef}/>
+              <ContactSection ref={contactRef} />
+        </IridescenceBackground>}
       </main>
     </>
   );

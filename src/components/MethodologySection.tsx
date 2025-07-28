@@ -32,7 +32,6 @@ const slides = [
         "Connect with the people who matter most. Our platform helps you target and engage the right audiences with precision.",
       image: "/image 62.png",
     }
-    // Agrega más slides si lo necesitas
   ];
 
   const variants = {

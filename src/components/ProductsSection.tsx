@@ -129,7 +129,7 @@ const ProductsSection = forwardRef<HTMLElement>((props, ref) => {
                             alt={slides[index].title}
                             width={419}
                             height={313}
-                            className="w-full h-full object-cover px-6 py-6"
+                            className="w-full h-full object-cover px-6 py-6 rounded-[40px]"
                             sizes="100vw"
                         />
                     </motion.div>

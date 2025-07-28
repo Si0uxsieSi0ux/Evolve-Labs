@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import Aurora from './ui/Aurora'; // Ajusta la ruta según tu estructura
+import Aurora from './ui/Aurora'; 
 
 interface AuroraBackgroundProps {
   children: ReactNode;
@@ -8,7 +8,7 @@ interface AuroraBackgroundProps {
     colorStops?: string[]; // Colores del gradiente
     amplitude?: number; // Intensidad del efecto
     blend?: number; // Suavidad del gradiente
-    speed?: number; // Velocidad de la animación
+    speed?: number; // Velocidad de la animacion
   };
 }
 
