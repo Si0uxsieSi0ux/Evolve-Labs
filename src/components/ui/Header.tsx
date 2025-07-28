@@ -13,67 +13,6 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ scrollToSection, homeRef, aboutRef, contactRef, methodRef, productRef }) => {
-  
-  /*return (
-    <header 
-      className="fixed top-0 left-0 w-full shadow-md z-20 flex items-center justify-between px-6 py-1  h-[70px]" 
-      style={{ backgroundColor: '#EFCFA2' }}
-    >
-    
-      
-      <nav className="flex items-center space-x-1">
-        <button
-          onClick={() => scrollToSection(homeRef)}
-          
-        >
-          <b className="w-[105.6px] relative text-[15px] flex font-inter text-black hover:text-blue-500 text-center items-center justify-center h-[37px] transition-colors">Home</b>
-        </button>
-        <button
-          onClick={() => scrollToSection(aboutRef)}
-         
-          
-        >
-       <b className="w-[105.6px] relative text-[15px] flex font-inter text-black hover:text-blue-500 text-center items-center justify-center h-[37px] transition-colors">About</b>
-        </button>
-        <button
-          onClick={() => scrollToSection(methodRef)}
-          className="text-gray-600 hover:text-blue-500 transition-colors"
-        >
-          <b className="w-[105.6px] relative text-[15px] flex font-inter text-black hover:text-blue-500 text-center items-center justify-center h-[37px] transition-colors">Methodology</b>
-        </button>
-        <button
-          onClick={() => scrollToSection(productRef)}
-          className="text-gray-600 hover:text-blue-500 transition-colors"
-        >
-          <b className="w-[105.6px] relative text-[15px] flex font-inter text-black hover:text-blue-500 text-center items-center justify-center h-[37px] transition-colors">Products</b>
-        </button>
-        <button
-          onClick={() => scrollToSection(contactRef)}
-          className="text-gray-600 hover:text-blue-500 transition-colors"
-        >
-          <b className="w-[105.6px] relative text-[15px] flex font-inter text-black hover:text-blue-500 text-center items-center justify-center h-[37px] transition-colors">Contact</b>
-        </button>
-      </nav>
-      <div className="flex items-center space-x-2">
-       
-        <img src="/logo_evolve.png"  className="h-10 w-10" />
-        
-        <b className=" w-[105.6px] relative text-[20px] flex font-inter">
-          Evolve <br /> 
-          AI Labs
-        </b>
-      </div>
-      <div className="flex items-center space-x-3">
-        
-        <img src="/instagram_logo.png"  className="h-10 w-10" />
-        <img src="/linkedin_logo.png"  className="h-7 w-7" />
-        <img src="/x_logo.png"  className="h-7 w-7" />
-       
-        
-      </div>
-    </header>
-  );*/
-
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -102,74 +41,72 @@ const Header: React.FC<HeaderProps> = ({ scrollToSection, homeRef, aboutRef, con
           </b>
         </div>
         {/* Navegación */}
-      <nav /*className={`${
-        isMenuOpen ? 'flex' : 'hidden'
-      } lg:flex flex-col lg:flex-row items-center justify-center lg:space-x-4 w-full max-w-6xl mt-4 lg:mt-0 transition-all duration-300`}
-       */
+        <nav /*className={`${
+          isMenuOpen ? 'flex' : 'hidden'
+        } lg:flex flex-col lg:flex-row items-center justify-center lg:space-x-4 w-full max-w-6xl mt-4 lg:mt-0 transition-all duration-300`}
+        */
         className={`${
           isMenuOpen ? 'flex' : 'hidden'
         } lg:flex flex-col lg:flex-row items-center justify-center lg:space-x-4 w-full lg:w-auto mt-4 lg:mt-0 transition-all duration-300`} 
-      >
-        <button
-          onClick={() => {
-            scrollToSection(homeRef);
-            setIsMenuOpen(false);
-          }}
-          className="w-full lg:w-[105.6px] text-[15px] font-inter text-black hover:text-blue-500 text-center py-2 transition-colors"
         >
-          <b>Home</b>
-        </button>
-        <button
-          onClick={() => {
-            scrollToSection(aboutRef);
-            setIsMenuOpen(false);
-          }}
-          className="w-full lg:w-[105.6px] text-[15px] font-inter text-black hover:text-blue-500 text-center py-2 transition-colors"
-        >
-          <b>About</b>
-        </button>
-        <button
-          onClick={() => {
-            scrollToSection(methodRef);
-            setIsMenuOpen(false);
-          }}
-          className="w-full lg:w-[105.6px] text-[15px] font-inter text-black hover:text-blue-500 text-center py-2 transition-colors"
-        >
-          <b>Methodology</b>
-        </button>
-        <button
-          onClick={() => {
-            scrollToSection(productRef);
-            setIsMenuOpen(false);
-          }}
-          className="w-full lg:w-[105.6px] text-[15px] font-inter text-black hover:text-blue-500 text-center py-2 transition-colors"
-        >
-          <b>Products</b>
-        </button>
-        <button
-          onClick={() => {
-            scrollToSection(contactRef);
-            setIsMenuOpen(false);
-          }}
-          className="w-full lg:w-[105.6px] text-[15px] font-inter text-black hover:text-blue-500 text-center py-2 transition-colors"
-        >
-          <b>Contact</b>
-        </button>
-        {/* Íconos de redes sociales en móviles */}
-        <div className="flex lg:hidden items-center justify-center space-x-3 mt-4">
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-            <img src="/instagram_logo.png" className="h-7 w-7" alt="Instagram" />
-          </a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
-            <img src="/linkedin_logo.png" className="h-7 w-7" alt="LinkedIn" />
-          </a>
-          <a href="https://x.com" target="_blank" rel="noopener noreferrer">
-            <img src="/x_logo.png" className="h-7 w-7" alt="X" />
-          </a>
-        </div>
-      </nav>
-        
-        {/* Íconos de redes sociales (ocultos en móviles, mostrados en desktop) */}
+          <button
+            onClick={() => {
+              scrollToSection(homeRef);
+              setIsMenuOpen(false);
+            }}
+            className="w-full lg:w-[105.6px] text-[15px] font-inter text-black hover:text-blue-500 text-center py-2 transition-colors"
+          >
+            <b>Home</b>
+          </button>
+          <button
+            onClick={() => {
+              scrollToSection(aboutRef);
+              setIsMenuOpen(false);
+            }}
+            className="w-full lg:w-[105.6px] text-[15px] font-inter text-black hover:text-blue-500 text-center py-2 transition-colors"
+          >
+            <b>About</b>
+          </button>
+          <button
+            onClick={() => {
+              scrollToSection(methodRef);
+              setIsMenuOpen(false);
+            }}
+            className="w-full lg:w-[105.6px] text-[15px] font-inter text-black hover:text-blue-500 text-center py-2 transition-colors"
+          >
+            <b>Methodology</b>
+          </button>
+          <button
+            onClick={() => {
+              scrollToSection(productRef);
+              setIsMenuOpen(false);
+            }}
+            className="w-full lg:w-[105.6px] text-[15px] font-inter text-black hover:text-blue-500 text-center py-2 transition-colors"
+          >
+            <b>Products</b>
+          </button>
+          <button
+            onClick={() => {
+              scrollToSection(contactRef);
+              setIsMenuOpen(false);
+            }}
+            className="w-full lg:w-[105.6px] text-[15px] font-inter text-black hover:text-blue-500 text-center py-2 transition-colors"
+          >
+            <b>Contact</b>
+          </button>
+          {/* Íconos de redes sociales en móviles */}
+          <div className="flex lg:hidden items-center justify-center space-x-3 mt-4">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+              <img src="/instagram_logo.png" className="h-7 w-7" alt="Instagram" />
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+              <img src="/linkedin_logo.png" className="h-7 w-7" alt="LinkedIn" />
+            </a>
+            <a href="https://x.com" target="_blank" rel="noopener noreferrer">
+              <img src="/x_logo.png" className="h-7 w-7" alt="X" />
+            </a>
+          </div>
+        </nav>
         <div className="hidden lg:flex items-center space-x-3">
           <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
             <img src="/instagram_logo.png" className="h-7 w-7" alt="Instagram" />
@@ -182,8 +119,6 @@ const Header: React.FC<HeaderProps> = ({ scrollToSection, homeRef, aboutRef, con
           </a>
         </div>
       </div>
-
-      
     </header>
   );
 };
